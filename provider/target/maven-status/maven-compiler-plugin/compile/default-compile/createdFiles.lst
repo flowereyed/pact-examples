@@ -1,0 +1,5 @@
+com\vertex\data\Book.class
+com\vertex\BookApp.class
+com\vertex\service\BookService.class
+com\vertex\controller\BookController.class
+com\vertex\data\Book$BookBuilder.class

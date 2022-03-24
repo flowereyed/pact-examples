@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: com.vertex.pact.ProviderPactTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.708 s <<< FAILURE! - in com.vertex.pact.ProviderPactTest
+verifyPact{PactVerificationContext}  Time elapsed: 0.705 s  <<< ERROR!
+java.lang.UnsupportedOperationException: At least one pact source must be present on the test class
+

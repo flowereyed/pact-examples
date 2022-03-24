@@ -1,0 +1,8 @@
+com\vertex\service\UserService.class
+com\vertex\endpoint\BookEndpoint.class
+com\vertex\controller\UserController.class
+com\vertex\data\Book$BookBuilder.class
+com\vertex\data\Book.class
+com\vertex\endpoint\BookEndpoint$1.class
+com\vertex\data\User$UserBuilder.class
+com\vertex\data\User.class

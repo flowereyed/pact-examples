@@ -1,0 +1,154 @@
+{
+  "provider": {
+    "name": "bookService"
+  },
+  "consumer": {
+    "name": "bookEndpoint"
+  },
+  "interactions": [
+    {
+      "description": "get books for user with not existed",
+      "request": {
+        "method": "GET",
+        "path": "/books",
+        "query": {
+          "userId": [
+            "ca27d693-56a0-4319-8b48-2564f9307fca"
+          ]
+        },
+        "matchingRules": {
+          "query": {
+            "userId": {
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "ca27d693-56a0-4319-8b48-2564f9307fca"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 404,
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "providerStates": [
+        {
+          "name": "Books for user not exist"
+        }
+      ]
+    },
+    {
+      "description": "get books by user id",
+      "request": {
+        "method": "GET",
+        "path": "/books",
+        "query": {
+          "userId": [
+            "24daf846-5268-4835-b4c5-03361cc55e8f"
+          ]
+        },
+        "matchingRules": {
+          "query": {
+            "userId": {
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "([a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8})"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": [
+          {
+            "year": "1906",
+            "author": "Antwan Price",
+            "id": "24daf846-5268-4835-b4c5-03361cc55e8f",
+            "title": "The Green Bay Tree",
+            "userId": "24daf846-5268-4835-b4c5-03361cc55e8f"
+          }
+        ],
+        "matchingRules": {
+          "body": {
+            "$": {
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 1
+                }
+              ],
+              "combine": "AND"
+            },
+            "$[*].id": {
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$[*].title": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$[*].author": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$[*].year": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$[*].userId": {
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "books exists"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "4.1.7"
+    }
+  }
+}
